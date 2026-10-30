@@ -1,1 +1,74 @@
 @import "tailwindcss";
+
+@layer base {
+    @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 100;
+        src: url("../../public/fonts/inter/Thin.ttf");
+    }
+
+    @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 200;
+        src: url("../../public/fonts/inter/ExtraLight.ttf");
+    }
+
+    @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 300;
+        src: url("../../public/fonts/inter/Light.ttf");
+    }
+
+    @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        src: url("../../public/fonts/inter/Regular.ttf");
+    }
+
+    @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        src: url("../../public/fonts/inter/Medium.ttf");
+    }
+
+    @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        src: url("../../public/fonts/inter/SemiBold.ttf");
+    }
+
+    @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        src: url("../../public/fonts/inter/Bold.ttf");
+    }
+
+    @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 800;
+        src: url("../../public/fonts/inter/ExtraBold.ttf");
+    }
+
+    @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        src: url("../../public/fonts/inter/Black.ttf");
+    }
+
+    * {
+        @apply font-inter!;
+    }
+}
+
+@theme {
+    --font-inter: "Inter";
+}

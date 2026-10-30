@@ -1,7 +1,10 @@
+import SideBar from "./partials/SideBar.jsx";
+
 const MasterLayout = ({ children }) => {
-    return <>
+    return <div class={'flex h-dvh'}>
+        <SideBar />
         {children}
-    </>
+    </div>
 }
 
 export default MasterLayout
