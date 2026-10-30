@@ -1,4 +1,6 @@
-﻿namespace UI
+﻿using Microsoft.Web.WebView2.Core;
+
+namespace UI
 {
     public partial class Main : Form
     {
@@ -20,11 +22,13 @@
                 path = $"http://localhost:{AppSettings.DevelopmentPort}";
             }else
             {
-                path = Path.Combine(
-                    Application.StartupPath,
-                    "src/dist",
-                    "index.html"
+                webView.CoreWebView2.SetVirtualHostNameToFolderMapping(
+                    "cortex.local",
+                    Path.Combine(Application.StartupPath, "src", "dist"),
+                    CoreWebView2HostResourceAccessKind.Allow
                 );
+
+                path = "https://cortex.local/index.html";
             }
 
             webView.CoreWebView2.NavigationCompleted += (s, args) =>

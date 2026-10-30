@@ -1,13 +1,14 @@
 import {LocationProvider, Route, Router as Routes} from "preact-iso";
 import HomePage from "../features/home/pages/HomePage.jsx";
+import HashLocationProvider from "../providers/HashLocationProvider.jsx";
 
 const Router = () => {
     return <>
-        <LocationProvider>
+        <HashLocationProvider>
             <Routes>
                 <Route path="/" component={HomePage} />
             </Routes>
-        </LocationProvider>
+        </HashLocationProvider>
     </>
 }
 

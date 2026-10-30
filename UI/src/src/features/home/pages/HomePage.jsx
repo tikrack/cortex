@@ -11,7 +11,7 @@ const HomePage = () => {
                 </p>
 
                 <button class="mt-6 rounded-lg bg-cyan-500 px-5 py-2 font-semibold hover:bg-cyan-400">
-                    Get Started
+                    Get Startedopkok
                 </button>
             </div>
         </main>
