@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="Business/Business.csproj" Id="eaad038c-eb82-40b0-973c-84bd3c5f3e20" />
+  <Project Path="Data/Data.csproj" Id="1ade186c-e832-49aa-a2ef-03306a522ac5" />
+  <Project Path="UI/UI.csproj" />
+</Solution>
