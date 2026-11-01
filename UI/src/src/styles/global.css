@@ -5,63 +5,63 @@
         font-family: 'Inter';
         font-style: normal;
         font-weight: 100;
-        src: url("../../public/fonts/inter/Thin.ttf");
+        src: url("/fonts/inter/Thin.ttf");
     }
 
     @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 200;
-        src: url("../../public/fonts/inter/ExtraLight.ttf");
+        src: url("/fonts/inter/ExtraLight.ttf");
     }
 
     @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 300;
-        src: url("../../public/fonts/inter/Light.ttf");
+        src: url("/fonts/inter/Light.ttf");
     }
 
     @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
-        src: url("../../public/fonts/inter/Regular.ttf");
+        src: url("/fonts/inter/Regular.ttf");
     }
 
     @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
-        src: url("../../public/fonts/inter/Medium.ttf");
+        src: url("/fonts/inter/Medium.ttf");
     }
 
     @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
-        src: url("../../public/fonts/inter/SemiBold.ttf");
+        src: url("/fonts/inter/SemiBold.ttf");
     }
 
     @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
-        src: url("../../public/fonts/inter/Bold.ttf");
+        src: url("/fonts/inter/Bold.ttf");
     }
 
     @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 800;
-        src: url("../../public/fonts/inter/ExtraBold.ttf");
+        src: url("/fonts/inter/ExtraBold.ttf");
     }
 
     @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 900;
-        src: url("../../public/fonts/inter/Black.ttf");
+        src: url("/fonts/inter/Black.ttf");
     }
 
     * {
@@ -71,4 +71,10 @@
 
 @theme {
     --font-inter: "Inter";
+}
+
+@layer components {
+    .t-action-button {
+        @apply text-gray-400 size-9 transition-all duration-100 hover:bg-gray-100 flex justify-center items-center rounded-lg cursor-pointer active:scale-95;
+    }
 }
