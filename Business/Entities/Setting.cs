@@ -2,7 +2,7 @@
 
 namespace Business.Entities;
 
-public class Setting
+public class Setting : BaseEntity
 {
     public Guid Id { get; set; }
 

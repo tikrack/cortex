@@ -7,6 +7,7 @@ namespace Data.Context;
 public class CortexDbContext : DbContext
 {
     public DbSet<Setting> Settings { get; set; }
+    public DbSet<Knowledge> Knowledges { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
