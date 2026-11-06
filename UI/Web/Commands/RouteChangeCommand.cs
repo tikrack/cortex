@@ -9,6 +9,6 @@ public class RouteChangeCommand : IWebCommand
     
     public void Execute(JsonElement data)
     {
-        MessageBox.Show(data.GetProperty("route").GetString());
+        
     }
 }
