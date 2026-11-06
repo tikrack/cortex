@@ -1,4 +1,4 @@
-import {IconSearch, IconLayoutSidebar, IconEdit, IconLibrary} from '@tabler/icons-preact';
+import {IconSearch, IconLayoutSidebar, IconEdit, IconLibrary, IconSettings} from '@tabler/icons-preact';
 
 const SideBar = () => {
     const ITEMS = [
@@ -10,7 +10,12 @@ const SideBar = () => {
         {
             title: "Knowledge",
             icon: <IconLibrary stroke={1.5} size={20} />,
-            url: "/knowledge"
+            url: "/knowledges"
+        },
+        {
+            title: "Setting",
+            icon: <IconSettings stroke={1.5} size={20} />,
+            url: "/settings"
         },
     ]
 

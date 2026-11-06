@@ -4,19 +4,32 @@ import MasterLayout from "../layouts/MasterLayout.jsx";
 import HomeRedirector from "../redirector/HomeRedirector.jsx";
 import HomePage from "../features/home/pages/HomePage.jsx";
 import KnowledgePage from "../features/knowledge/pages/KnowledgePage.jsx";
+import SettingPage from "../features/setting/pages/SettingPage.jsx";
 
 const Router = () => {
+    const handleChange = (route) => {
+
+        window.chrome.webview.postMessage({
+            method: 'route-change',
+            data: {
+                route
+            }
+        });
+    }
+
     return <>
         <MasterLayout>
             <HashLocationProvider>
                 <ErrorBoundary>
-                    <Routes>
+                    <Routes onRouteChange={handleChange}>
                         <Route path="/" component={HomeRedirector} />
 
                         <Route path="/new" component={HomePage} />
-                        <Route path="/chat/:id" component={HomePage} />
+                        <Route path="/chats/:id" component={HomePage} />
 
-                        <Route path="/knowledge" component={KnowledgePage} />
+                        <Route path="/knowledges" component={KnowledgePage} />
+
+                        <Route path="/settings" component={SettingPage} />
                     </Routes>
                 </ErrorBoundary>
             </HashLocationProvider>
