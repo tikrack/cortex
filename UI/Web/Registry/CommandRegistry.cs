@@ -4,17 +4,14 @@ namespace UI.Web.Registry;
 
 public class CommandRegistry
 {
-    Dictionary<string, IWebCommand> _commands = new();
+    readonly Dictionary<string, IWebCommand> _commands = new();
 
     private static CommandRegistry? _instance = null;
 
     public static CommandRegistry Instance { 
         get
         {
-            if(_instance == null)
-            {
-                _instance = new CommandRegistry();
-            }
+            _instance ??= new CommandRegistry();
 
             return _instance;
         }

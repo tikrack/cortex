@@ -5,5 +5,5 @@ namespace UI.Web.Contract;
 public interface IWebCommand
 {
     string Name { get; }
-    Action Execute(JsonElement data);
+    void Execute(JsonElement data);
 }

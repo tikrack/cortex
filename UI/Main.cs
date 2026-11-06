@@ -11,7 +11,7 @@ public partial class Main : Form
         InitializeComponent();
     }
 
-    private async void Main_Load(object sender, EventArgs e)
+    private void Main_Load(object sender, EventArgs e)
     {
         var webViewManager = new WebViewManager(webView);
 

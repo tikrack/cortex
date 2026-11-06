@@ -4,15 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using UI.Web.Registry;
 using UI.Web.Routing;
 
 namespace UI.Web;
 
-public class WebViewManager(WebView2 _webView)
+public class WebViewManager(WebView2 webView)
 {
     public async void Initialize()
     {
-        await _webView.EnsureCoreWebView2Async();
+        await webView.EnsureCoreWebView2Async();
 
         string path;
 
@@ -22,7 +23,7 @@ public class WebViewManager(WebView2 _webView)
         }
         else
         {
-            _webView.CoreWebView2.SetVirtualHostNameToFolderMapping(
+            webView.CoreWebView2.SetVirtualHostNameToFolderMapping(
                 "cortex.local",
                 Path.Combine(Application.StartupPath, "src", "dist"),
                 CoreWebView2HostResourceAccessKind.Allow
@@ -31,7 +32,7 @@ public class WebViewManager(WebView2 _webView)
             path = "https://cortex.local/index.html";
         }
 
-        _webView.CoreWebView2.NavigationCompleted += (s, args) =>
+        webView.CoreWebView2.NavigationCompleted += (s, args) =>
         {
             if (!args.IsSuccess)
             {
@@ -46,11 +47,13 @@ public class WebViewManager(WebView2 _webView)
             }
         };
 
-        var router = new WebMessageRouter(_webView);
+        var registrator = new CommandRegistrator();
+        registrator.Register();
 
+        var router = new WebMessageRouter(webView);
         router.Initialize();
 
-        _webView.CoreWebView2.Navigate(
+        webView.CoreWebView2.Navigate(
            path
        );
     }
