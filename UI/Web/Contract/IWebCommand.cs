@@ -7,5 +7,5 @@ public interface IWebCommand
 {
     string Name { get; }
     
-    void Execute(JsonElement data, WebView2? webView);
+    void Execute(JsonElement? data, WebView2? webView);
 }

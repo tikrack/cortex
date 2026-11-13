@@ -8,12 +8,12 @@ import SettingPage from "../features/setting/pages/SettingPage.jsx";
 
 const Router = () => {
   const handleChange = (route) => {
-    window.chrome.webview.postMessage({
-      method: "route-change",
-      data: {
-        route: route.startsWith("/") ? route.substring(1) : route,
-      },
-    });
+    // window.chrome.webview.postMessage({
+    //   method: "route-change",
+    //   data: {
+    //     route: route.startsWith("/") ? route.substring(1) : route,
+    //   },
+    // });
   };
 
   return (

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
-using UI.Route.Registry;
 using UI.Web.Registry;
 using UI.Web.Routing;
 
@@ -45,7 +44,6 @@ public class WebViewManager(WebView2 webView)
         };
 
         (new WebCommandRegistrator()).Register();
-        (new RouteCommandRegistrator()).Register();
 
         var router = new WebMessageRouter(webView);
         router.Initialize();

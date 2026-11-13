@@ -7,5 +7,5 @@ public interface IAsyncWebCommand
 {
     string Name { get; }
     
-    Task ExecuteAsync(JsonElement data, WebView2? webView);
+    Task ExecuteAsync(JsonElement? data, WebView2? webView);
 }

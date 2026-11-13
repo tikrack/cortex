@@ -8,8 +8,12 @@ const SettingPage = () => {
   const [settings, setSettings] = useState([]);
 
   useEffect(() => {
+    window.chrome.webview.postMessage({
+      method: "all-settings",
+    });
+
     return subscribeToWebView((msg) => {
-      if (msg?.type === "settings") {
+      if (msg?.type === "all-settings") {
         setSettings(msg.data);
         setLoading(false);
       }
@@ -39,7 +43,10 @@ const SettingPage = () => {
         ) : (
           <div className={"space-y-4"}>
             {settings.map((setting, index) => (
-              <SettingCard setting={setting} key={`setting-${index}`} />
+              <SettingCard
+                setting={setting}
+                key={`setting-${index}`}
+              />
             ))}
           </div>
         )}

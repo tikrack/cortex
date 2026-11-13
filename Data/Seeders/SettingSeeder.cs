@@ -16,6 +16,7 @@ public class SettingSeeder
             new Setting
             {
                 Name = "Provider Ai Model",
+                Key = "provider-ai-model",
                 Value = "",
                 Type = SettingType.STRING,
                 Group = SettingGroup.AI,
@@ -24,6 +25,7 @@ public class SettingSeeder
             new Setting
             {
                 Name = "Provider Api Key",
+                Key = "provider-api-key",
                 Value = "",
                 Type = SettingType.STRING,
                 Group = SettingGroup.AI,

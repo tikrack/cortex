@@ -9,7 +9,7 @@ public class WebMessageRouter(WebView2 webView)
 {
     public void Initialize()
     {
-        webView.CoreWebView2.WebMessageReceived += (sender, e) =>
+        webView.CoreWebView2.WebMessageReceived += async (sender, e) =>
         {
             var message = JsonSerializer.Deserialize<JsonElement>(
                 e.WebMessageAsJson
@@ -23,18 +23,22 @@ public class WebMessageRouter(WebView2 webView)
 
             if (command == null) return;
 
+            JsonElement data;
+
+            var status = message.TryGetProperty("data", out data);
+
             switch (command)
             {
                 case IWebCommand webCommand:
-                    webCommand?.Execute(
-                        message.GetProperty("data"),
+                    webCommand.Execute(
+                        status ? data : null,
                         webView
                     );
                     break;
                 
                 case IAsyncWebCommand webCommandAsync:
-                    webCommandAsync?.ExecuteAsync(
-                        message.GetProperty("data"),
+                    await webCommandAsync.ExecuteAsync(
+                        status ? data : null,
                         webView
                     );
                     break;

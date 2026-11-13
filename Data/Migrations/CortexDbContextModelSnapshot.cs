@@ -82,6 +82,10 @@ namespace Data.Migrations
                     b.Property<int>("Group")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");

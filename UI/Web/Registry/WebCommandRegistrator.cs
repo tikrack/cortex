@@ -1,4 +1,4 @@
-﻿using UI.Web.Commands;
+﻿using UI.Web.Commands.Settings;
 
 namespace UI.Web.Registry;
 
@@ -8,6 +8,7 @@ public class WebCommandRegistrator
     {
         var registry = WebCommandRegistry.Instance;
         
-        registry.Register(new RouteChangeCommand());
+        registry.Register(new AllSettingsCommand());
+        registry.Register(new UpdateSettingValueCommand());
     }
 }
