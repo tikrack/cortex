@@ -2,37 +2,39 @@
 
 namespace UI.Web.Registry;
 
-public class CommandRegistry
+public class WebCommandRegistry
 {
-    readonly Dictionary<string, IWebCommand> _commands = new();
+    readonly Dictionary<string, object> _commands = new();
 
-    private static CommandRegistry? _instance = null;
+    private static WebCommandRegistry? _instance = null;
 
-    public static CommandRegistry Instance { 
+    public static WebCommandRegistry Instance { 
         get
         {
-            _instance ??= new CommandRegistry();
+            _instance ??= new WebCommandRegistry();
 
             return _instance;
         }
     }
 
-    private CommandRegistry() {}
+    private WebCommandRegistry() {}
 
     public void Register(IWebCommand command)
     {
         _commands.Add(command.Name, command);
     }
 
-    public IWebCommand? Get(string name)
+
+    public void Register(IAsyncWebCommand command)
     {
-        IWebCommand? command;
+        _commands.Add(command.Name, command);
+    }
 
-        var status = _commands.TryGetValue(name, out command);
-
-        if (status)
+    public object? Get(string name)
+    {
+        if (_commands.TryGetValue(name, out var command))
             return command;
-        else
-            throw new Exception($"Command {name} not found");
+
+        throw new Exception($"Command {name} not found");
     }
 }

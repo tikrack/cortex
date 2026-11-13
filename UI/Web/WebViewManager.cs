@@ -1,9 +1,6 @@
 ﻿using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
-using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
+using UI.Route.Registry;
 using UI.Web.Registry;
 using UI.Web.Routing;
 
@@ -47,8 +44,8 @@ public class WebViewManager(WebView2 webView)
             }
         };
 
-        var registrator = new CommandRegistrator();
-        registrator.Register();
+        (new WebCommandRegistrator()).Register();
+        (new RouteCommandRegistrator()).Register();
 
         var router = new WebMessageRouter(webView);
         router.Initialize();

@@ -2,11 +2,11 @@
 
 namespace UI.Web.Registry;
 
-public class CommandRegistrator
+public class WebCommandRegistrator
 {
     public void Register()
     {
-        var registry = CommandRegistry.Instance;
+        var registry = WebCommandRegistry.Instance;
         
         registry.Register(new RouteChangeCommand());
     }
