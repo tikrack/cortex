@@ -1,6 +1,7 @@
 import { useEffect, useState } from "preact/hooks";
 import PageLoading from "../../../components/PageLoading.jsx";
 import { subscribeToWebView } from "../../../libs/webviewBridge.js";
+import SettingCard from "../components/SettingCard.jsx";
 
 const SettingPage = () => {
   const [loading, setLoading] = useState(true);
@@ -8,7 +9,10 @@ const SettingPage = () => {
 
   useEffect(() => {
     return subscribeToWebView((msg) => {
-      console.log(msg);
+      if (msg?.type === "settings") {
+        setSettings(msg.data);
+        setLoading(false);
+      }
     });
   }, []);
 
@@ -28,9 +32,15 @@ const SettingPage = () => {
           </p>
         </div>
 
-        {loading && (
+        {loading ? (
           <div className={"mt-20"}>
             <PageLoading />
+          </div>
+        ) : (
+          <div className={"space-y-4"}>
+            {settings.map((setting, index) => (
+              <SettingCard setting={setting} key={`setting-${index}`} />
+            ))}
           </div>
         )}
       </section>

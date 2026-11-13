@@ -7,7 +7,6 @@ let flushing = false;
 
 if (isWebView) {
   window.chrome.webview.addEventListener("message", (event) => {
-    console.log(event);
     const msg = event.data;
     if (listeners.size === 0) {
       buffer.push(msg);
