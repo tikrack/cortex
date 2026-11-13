@@ -1,4 +1,4 @@
-import {ErrorBoundary, Route, Router as Routes} from "preact-iso";
+import { ErrorBoundary, Route, Router as Routes } from "preact-iso";
 import HashLocationProvider from "../providers/HashLocationProvider.jsx";
 import MasterLayout from "../layouts/MasterLayout.jsx";
 import HomeRedirector from "../redirector/HomeRedirector.jsx";
@@ -7,35 +7,35 @@ import KnowledgePage from "../features/knowledge/pages/KnowledgePage.jsx";
 import SettingPage from "../features/setting/pages/SettingPage.jsx";
 
 const Router = () => {
+  const handleChange = (route) => {
+    window.chrome.webview.postMessage({
+      method: "route-change",
+      data: {
+        route: route.startsWith("/") ? route.substring(1) : route,
+      },
+    });
+  };
 
-    const handleChange = (route) => {
+  return (
+    <>
+      <MasterLayout>
+        <HashLocationProvider>
+          <ErrorBoundary>
+            <Routes onRouteChange={handleChange}>
+              <Route path="/" component={HomeRedirector} />
 
-        window.chrome.webview.postMessage({
-            method: 'route-change',
-            data: {
-                route
-            }
-        });
-    }
+              <Route path="/new" component={HomePage} />
+              <Route path="/chats/:id" component={HomePage} />
 
-    return <>
-        <MasterLayout>
-            <HashLocationProvider>
-                <ErrorBoundary>
-                    <Routes onRouteChange={handleChange}>
-                        <Route path="/" component={HomeRedirector} />
+              <Route path="/knowledges" component={KnowledgePage} />
 
-                        <Route path="/new" component={HomePage} />
-                        <Route path="/chats/:id" component={HomePage} />
-
-                        <Route path="/knowledges" component={KnowledgePage} />
-
-                        <Route path="/settings" component={SettingPage} />
-                    </Routes>
-                </ErrorBoundary>
-            </HashLocationProvider>
-        </MasterLayout>
+              <Route path="/settings" component={SettingPage} />
+            </Routes>
+          </ErrorBoundary>
+        </HashLocationProvider>
+      </MasterLayout>
     </>
-}
+  );
+};
 
-export default Router
+export default Router;
