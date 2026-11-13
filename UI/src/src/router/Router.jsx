@@ -7,6 +7,7 @@ import KnowledgePage from "../features/knowledge/pages/KnowledgePage.jsx";
 import SettingPage from "../features/setting/pages/SettingPage.jsx";
 
 const Router = () => {
+
     const handleChange = (route) => {
 
         window.chrome.webview.postMessage({

@@ -24,8 +24,15 @@ public class CommandRegistry
         _commands.Add(command.Name, command);
     }
 
-    public IWebCommand Get(string name)
+    public IWebCommand? Get(string name)
     {
-        return _commands[name];
+        IWebCommand? command;
+
+        var status = _commands.TryGetValue(name, out command);
+
+        if (status)
+            return command;
+        else
+            throw new Exception($"Command {name} not found");
     }
 }

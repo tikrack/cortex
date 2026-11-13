@@ -11,10 +11,10 @@ public partial class Main : Form
         InitializeComponent();
     }
 
-    private void Main_Load(object sender, EventArgs e)
+    private async void Main_Load(object sender, EventArgs e)
     {
         var webViewManager = new WebViewManager(webView);
 
-        webViewManager.Initialize();
+        await webViewManager.Initialize();
     }
 }

@@ -20,7 +20,9 @@ public class WebMessageRouter(WebView2 webView)
 
             var command = registry.Get(method ?? "");
 
-            command.Execute(message.GetProperty("data"));
+            if (command == null) return;
+            
+            command?.Execute(message.GetProperty("data"), sender as WebView2);
         };
     }
 }

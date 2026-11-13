@@ -11,7 +11,7 @@ namespace UI.Web;
 
 public class WebViewManager(WebView2 webView)
 {
-    public async void Initialize()
+    public async Task Initialize()
     {
         await webView.EnsureCoreWebView2Async();
 
