@@ -15,21 +15,57 @@ public class SettingSeeder
         settings.AddRange(
             new Setting
             {
-                Name = "Provider Ai Model",
-                Key = "provider-ai-model",
+                Name = "Text Model Provider Base URL",
+                Key = "text-model-provider-base-url",
                 Value = "",
                 Type = SettingType.STRING,
                 Group = SettingGroup.AI,
-                Description = "Name of your using ai model."
+                Description = "Base URL of the text model provider API."
             },
             new Setting
             {
-                Name = "Provider Api Key",
-                Key = "provider-api-key",
+                Name = "Text Model Name",
+                Key = "text-model-name",
                 Value = "",
                 Type = SettingType.STRING,
                 Group = SettingGroup.AI,
-                Description = "Api key for using your ai provider models."
+                Description = "Name or identifier of the text model."
+            },
+            new Setting
+            {
+                Name = "Text Model Provider API Key",
+                Key = "text-model-provider-api-key",
+                Value = "",
+                Type = SettingType.STRING,
+                Group = SettingGroup.AI,
+                Description = "API key used to authenticate with the text model provider."
+            },
+            new Setting
+            {
+                Name = "Embedding Model Provider Base URL",
+                Key = "embedding-model-provider-base-url",
+                Value = "",
+                Type = SettingType.STRING,
+                Group = SettingGroup.AI,
+                Description = "Base URL of the embedding model provider API."
+            },
+            new Setting
+            {
+                Name = "Embedding Model Name",
+                Key = "embedding-model-name",
+                Value = "",
+                Type = SettingType.STRING,
+                Group = SettingGroup.AI,
+                Description = "Name or identifier of the embedding model."
+            },
+            new Setting
+            {
+                Name = "Embedding Model Provider API Key",
+                Key = "embedding-model-provider-api-key",
+                Value = "",
+                Type = SettingType.STRING,
+                Group = SettingGroup.AI,
+                Description = "API key used to authenticate with the embedding model provider."
             }
         );
 

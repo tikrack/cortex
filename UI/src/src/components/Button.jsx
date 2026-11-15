@@ -16,6 +16,7 @@ const sizeClasses = {
 };
 
 const Button = ({
+  link = null,
   children,
   className,
 
@@ -31,7 +32,25 @@ const Button = ({
 }) => {
   const isDisabled = disabled || loading;
 
-  return (
+  return link ? (
+    <a
+      href={link}
+      className={clsx(
+        "inline-flex items-center justify-center rounded-xl font-medium",
+        "transition-all duration-150 cursor-pointer select-none",
+        "disabled:opacity-50 disabled:pointer-events-none",
+        "active:scale-[0.98]",
+        variantClasses[variant],
+        sizeClasses[size],
+        className,
+      )}
+      {...props}
+    >
+      {loading && <IconLoader2 className="animate-spin" size={18} />}
+
+      {children && <span>{children}</span>}
+    </a>
+  ) : (
     <button
       type={type}
       disabled={isDisabled}
@@ -46,9 +65,7 @@ const Button = ({
       )}
       {...props}
     >
-      {loading && (
-        <IconLoader2 className="animate-spin" size={18} />
-      )}
+      {loading && <IconLoader2 className="animate-spin" size={18} />}
 
       {children && <span>{children}</span>}
     </button>

@@ -5,6 +5,7 @@ import HomeRedirector from "../redirector/HomeRedirector.jsx";
 import HomePage from "../features/home/pages/HomePage.jsx";
 import KnowledgePage from "../features/knowledge/pages/KnowledgePage.jsx";
 import SettingPage from "../features/setting/pages/SettingPage.jsx";
+import AddKnowledgePage from "../features/knowledge/pages/AddKnowledgePage.jsx";
 
 const Router = () => {
   const handleChange = (route) => {
@@ -27,7 +28,8 @@ const Router = () => {
               <Route path="/new" component={HomePage} />
               <Route path="/chats/:id" component={HomePage} />
 
-              <Route path="/knowledges" component={KnowledgePage} />
+              <Route path="/knowledge" component={KnowledgePage} />
+              <Route path="/knowledge/add" component={AddKnowledgePage} />
 
               <Route path="/settings" component={SettingPage} />
             </Routes>

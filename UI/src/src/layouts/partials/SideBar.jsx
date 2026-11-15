@@ -10,7 +10,7 @@ const SideBar = () => {
         {
             title: "Knowledge",
             icon: <IconLibrary stroke={1.5} size={20} />,
-            url: "/knowledges"
+            url: "/knowledge"
         },
         {
             title: "Setting",
