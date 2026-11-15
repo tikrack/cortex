@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             webView = new Microsoft.Web.WebView2.WinForms.WebView2();
+            notifyIcon = new NotifyIcon(components);
             ((System.ComponentModel.ISupportInitialize)webView).BeginInit();
             SuspendLayout();
             // 
@@ -45,6 +47,13 @@
             webView.TabIndex = 0;
             webView.ZoomFactor = 1D;
             // 
+            // notifyIcon
+            // 
+            notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
+            notifyIcon.Text = "notifyIcon";
+            notifyIcon.Visible = true;
+            notifyIcon.MouseClick += notifyIcon_MouseClick;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -55,6 +64,7 @@
             Name = "Main";
             Text = "Cortex";
             WindowState = FormWindowState.Maximized;
+            FormClosing += Main_FormClosing;
             Load += Main_Load;
             ((System.ComponentModel.ISupportInitialize)webView).EndInit();
             ResumeLayout(false);
@@ -63,5 +73,6 @@
         #endregion
 
         private Microsoft.Web.WebView2.WinForms.WebView2 webView;
+        private NotifyIcon notifyIcon;
     }
 }

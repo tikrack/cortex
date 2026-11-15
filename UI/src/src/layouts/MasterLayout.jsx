@@ -1,5 +1,4 @@
 import SideBar from "./partials/SideBar.jsx";
-import { Toaster } from "@preachjs/toast";
 
 const MasterLayout = ({ children }) => {
     return (

@@ -19,14 +19,14 @@ public class SettingService : ISettingService
         return settings;
     }
 
-    public async Task UpdateValue(string Key, string? Value)
+    public async Task UpdateValue(string key, string? value)
     {
         var db = new CortexDbContext();
 
-        var s = await db.Settings.SingleAsync(x => x.Key == Key);
+        var s = await db.Settings.SingleAsync(x => x.Key == key);
 
-        s.Value = Value;
+        s.Value = value ?? "";
 
-        db.SaveChanges();
+        await db.SaveChangesAsync();
     }
 }
