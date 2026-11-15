@@ -16,21 +16,9 @@ public class AllSettingsCommand : IAsyncWebCommand
 
         var settings = await settingService.GetAll();
 
-        var result = new WebMessageResult()
-        {
-            IsSuccess = true,
-            Data = settings,
-            Type = this.Name
-        };
-
-        webView?.CoreWebView2.PostWebMessageAsJson(
-            JsonSerializer.Serialize(
-                result,
-                new JsonSerializerOptions()
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                }
-            )
+        webView.PostSuccess(
+            type: Name,
+            data: settings
         );
     }
 }

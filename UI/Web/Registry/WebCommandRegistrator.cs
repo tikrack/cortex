@@ -1,4 +1,5 @@
-﻿using UI.Web.Commands.Settings;
+﻿using UI.Web.Commands.Knowledge;
+using UI.Web.Commands.Settings;
 
 namespace UI.Web.Registry;
 
@@ -10,5 +11,7 @@ public class WebCommandRegistrator
         
         registry.Register(new AllSettingsCommand());
         registry.Register(new UpdateSettingValueCommand());
+        
+        registry.Register(new AddKnowledgeCommand());
     }
 }

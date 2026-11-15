@@ -6,8 +6,8 @@ public class WebMessageResult
     
     public string Type { get; set; } = string.Empty;
     
-    public string Message { get; set; } = string.Empty;
-    public object Data { get; set; } = new ();
+    public string? Message { get; set; } = string.Empty;
+    public object? Data { get; set; } = new ();
 
-    public List<string> Errors = [];
+    public List<string>? Errors = [];
 }

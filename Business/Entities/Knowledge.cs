@@ -10,6 +10,7 @@ public class Knowledge : BaseEntity
     public string Value { get; set; }
 
     public KnowledgeType Type { get; set; }
+    public KnowledgeStatus Status { get; set; }
 
     public ICollection<KnowledgeChunk> Chunks { get; set; }
 }

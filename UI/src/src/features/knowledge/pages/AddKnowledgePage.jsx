@@ -15,7 +15,11 @@ const AddKnowledgePage = () => {
       alert("Please enter correct data.");
       return;
     }
-    console.log("o");
+
+    window.chrome.webview.postMessage({
+      method: "add-knowledge",
+      data: knowledge,
+    });
   };
 
   const handleChange = (e) => {

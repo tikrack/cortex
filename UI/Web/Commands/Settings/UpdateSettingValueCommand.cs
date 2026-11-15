@@ -26,5 +26,10 @@ public class UpdateSettingValueCommand : IAsyncWebCommand
         var allSettingCommand = new AllSettingsCommand();
 
         await allSettingCommand.ExecuteAsync(null, webView);
+        
+        webView.PostSuccess(
+            type: Name,
+            message: "Setting updated successfully."
+        );
     }
 }
