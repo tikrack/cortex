@@ -7,6 +7,16 @@ namespace Data.Services;
 
 public class SettingService : ISettingService
 {
+    public async Task<Setting> Get(string key)
+    {
+        var db = new CortexDbContext();
+
+        var setting = await db.Settings
+            .SingleAsync(x => x.Key == key);
+
+        return setting;
+    }
+    
     public async Task<List<Setting>> GetAll()
     {
         var db = new CortexDbContext();
