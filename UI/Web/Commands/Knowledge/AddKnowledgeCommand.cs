@@ -50,11 +50,6 @@ public class AddKnowledgeCommand : IAsyncWebCommand
         
         await knowledgeService.Add(knowledge);
         
-        webView.PostSuccess(
-            Name,
-            message: "Knowledge added successfully."
-        );
-        
         ISettingService settingService = new SettingService();
 
         var settings = await settingService.GetAll();
@@ -75,8 +70,7 @@ public class AddKnowledgeCommand : IAsyncWebCommand
 
         var generator = client.GetEmbeddingClient(settingsDictionary["embedding-model-name"])
             .AsIEmbeddingGenerator(defaultModelDimensions: 1024);
-
-
+        
         GeneratedEmbeddings<Embedding<float>> embeddings = new();
         
         try
@@ -109,7 +103,6 @@ public class AddKnowledgeCommand : IAsyncWebCommand
             };
             
             IKnowledgeChunkService knowledgeChunkService = new KnowledgeChunkService();
-
             await knowledgeChunkService.Add(knowledgeChunk);
         }
         
