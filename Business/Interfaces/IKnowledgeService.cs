@@ -9,5 +9,7 @@ public interface IKnowledgeService
     
     public Task Add(Knowledge knowledge);
     
+    public Task Delete(Guid id);
+    
     public Task UpdateStatus(Guid id, KnowledgeStatus status);
 }

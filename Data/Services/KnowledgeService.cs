@@ -27,6 +27,17 @@ public class KnowledgeService : IKnowledgeService
         await db.SaveChangesAsync();
     }
 
+    public async Task Delete(Guid id)
+    {
+        var db = new CortexDbContext();
+
+        var knowledge = await db.Knowledges.SingleAsync(x => x.Id == id);
+
+        db.Knowledges.Remove(knowledge);
+        
+        await db.SaveChangesAsync();
+    }
+
     public async Task UpdateStatus(Guid id, KnowledgeStatus status)
     {
         var db = new CortexDbContext();
