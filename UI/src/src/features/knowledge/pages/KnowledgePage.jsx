@@ -5,13 +5,17 @@ import KnowledgeCard from "../components/KnowledgeCard.jsx";
 import { subscribeToWebView } from "../../../libs/webviewBridge.js";
 
 const KnowledgePage = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [knowledge, setKnowledge] = useState([]);
 
-  useEffect(() => {
+  const getKnowledge = () => {
     window.chrome.webview.postMessage({
       method: "all-knowledge",
     });
+  }
+
+  useEffect(() => {
+    getKnowledge();
 
     return subscribeToWebView((msg) => {
       if (msg?.type === "all-knowledge") {
@@ -50,9 +54,13 @@ const KnowledgePage = () => {
             <PageLoading />
           </div>
         ) : (
-          <div className={"space-y-4"}>
+          <div className={"space-y-4 pb-10"}>
             {knowledge.map((kn, index) => (
-              <KnowledgeCard knowledge={kn} key={`knowledge-${index}`} />
+              <KnowledgeCard
+                getKnowledge={getKnowledge}
+                knowledge={kn}
+                key={`knowledge-${index}`}
+              />
             ))}
 
             {!loading && knowledge.length === 0 && (
@@ -61,7 +69,7 @@ const KnowledgePage = () => {
                   "bg-gray-50 p-4 py-10 rounded-3xl border border-dashed border-gray-300 text-center text-gray-700"
                 }
               >
-                The Knowledge list is empty.
+                The Knowledge list is <empty class=""></empty>
               </div>
             )}
           </div>

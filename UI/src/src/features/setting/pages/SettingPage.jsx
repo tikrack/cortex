@@ -41,12 +41,9 @@ const SettingPage = () => {
             <PageLoading />
           </div>
         ) : (
-          <div className={"space-y-4"}>
+          <div className={"space-y-4 pb-10"}>
             {settings.map((setting, index) => (
-              <SettingCard
-                setting={setting}
-                key={`setting-${index}`}
-              />
+              <SettingCard setting={setting} key={`setting-${index}`} />
             ))}
           </div>
         )}
