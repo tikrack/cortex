@@ -4,6 +4,8 @@ import { subscribeToWebView } from "../../../libs/webviewBridge.js";
 import { useLocation, useRoute } from "preact-iso";
 
 const AddKnowledgePage = () => {
+  const [loading, setLoading] = useState(false);
+
   const { url, route } = useLocation();
 
   const [knowledge, setKnowledge] = useState({
@@ -14,6 +16,7 @@ const AddKnowledgePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (knowledge.name.trim() === "" || knowledge.value.trim() === "") {
       alert("Please enter correct data.");
@@ -34,6 +37,8 @@ const AddKnowledgePage = () => {
   };
 
   const handleSuccess = () => {
+    setLoading(false)
+
     route("/knowledge")
   };
 
@@ -43,7 +48,6 @@ const AddKnowledgePage = () => {
         handleSuccess()
       }
     });
-
   }, []);
 
   return (
@@ -109,7 +113,7 @@ const AddKnowledgePage = () => {
                 placeholder={"Knowledge Value"}
               >{knowledge.value}</textarea>
             </label>
-            <Button type={"submit"} className={"w-48"}>
+            <Button type={"submit"} className={"w-48"} loading={loading}>
               Submit & Process
             </Button>
           </form>
