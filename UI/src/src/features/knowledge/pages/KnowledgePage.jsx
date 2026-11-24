@@ -1,11 +1,25 @@
 import PageLoading from "../../../components/PageLoading.jsx";
 import Button from "../../../components/Button.jsx";
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import KnowledgeCard from "../components/KnowledgeCard.jsx";
+import { subscribeToWebView } from "../../../libs/webviewBridge.js";
 
 const KnowledgePage = () => {
   const [loading, setLoading] = useState(false);
   const [knowledge, setKnowledge] = useState([]);
+
+  useEffect(() => {
+    window.chrome.webview.postMessage({
+      method: "all-knowledge",
+    });
+
+    return subscribeToWebView((msg) => {
+      if (msg?.type === "all-knowledge") {
+        setKnowledge(msg.data);
+        setLoading(false);
+      }
+    });
+  }, []);
 
   return (
     <>

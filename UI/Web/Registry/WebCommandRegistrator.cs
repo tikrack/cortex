@@ -12,6 +12,7 @@ public class WebCommandRegistrator
         registry.Register(new AllSettingsCommand());
         registry.Register(new UpdateSettingValueCommand());
         
+        registry.Register(new AllKnowledgeCommand());
         registry.Register(new AddKnowledgeCommand());
     }
 }

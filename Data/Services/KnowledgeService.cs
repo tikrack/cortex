@@ -8,6 +8,16 @@ namespace Data.Services;
 
 public class KnowledgeService : IKnowledgeService
 {
+    public async Task<List<Knowledge>> GetAll()
+    {
+        var db = new CortexDbContext();
+        
+        return db.Knowledges
+            .Include(x => x.Chunks)
+            .AsNoTracking()
+            .ToList();
+    }
+
     public async Task Add(Knowledge knowledge)
     {
         var db = new CortexDbContext();
