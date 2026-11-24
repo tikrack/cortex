@@ -8,6 +8,8 @@ public class KnowledgeChunkConfiguration : IEntityTypeConfiguration<KnowledgeChu
 {
     public void Configure(EntityTypeBuilder<KnowledgeChunk> builder)
     {
+        builder.HasKey(x => x.Id);
+
         builder.Property(x => x.Content)
             .IsRequired();
 
@@ -17,6 +19,16 @@ public class KnowledgeChunkConfiguration : IEntityTypeConfiguration<KnowledgeChu
 
         builder.Property(x => x.KnowledgeId)
             .IsRequired();
+
+        builder.HasOne(x => x.Knowledge)
+            .WithMany(x => x.Chunks)
+            .HasForeignKey(x => x.KnowledgeId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasIndex(x => x.Embedding)
+            .HasMethod("hnsw")
+            .HasOperators("vector_cosine_ops")
+            .HasStorageParameter("m", 16)
+            .HasStorageParameter("ef_construction", 64);
     }
 }
-    
