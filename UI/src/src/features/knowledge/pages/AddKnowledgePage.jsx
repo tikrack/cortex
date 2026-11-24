@@ -1,8 +1,11 @@
 import Button from "../../../components/Button.jsx";
 import { useEffect, useState } from "preact/hooks";
 import { subscribeToWebView } from "../../../libs/webviewBridge.js";
+import { useLocation, useRoute } from "preact-iso";
 
 const AddKnowledgePage = () => {
+  const { url, route } = useLocation();
+
   const [knowledge, setKnowledge] = useState({
     name: "",
     value: "",
@@ -31,7 +34,7 @@ const AddKnowledgePage = () => {
   };
 
   const handleSuccess = () => {
-    
+    route("/knowledge")
   };
 
   useEffect(() => {
