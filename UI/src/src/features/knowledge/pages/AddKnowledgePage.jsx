@@ -1,5 +1,6 @@
 import Button from "../../../components/Button.jsx";
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
+import { subscribeToWebView } from "../../../libs/webviewBridge.js";
 
 const AddKnowledgePage = () => {
   const [knowledge, setKnowledge] = useState({
@@ -28,6 +29,19 @@ const AddKnowledgePage = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleSuccess = () => {
+    
+  };
+
+  useEffect(() => {
+    return subscribeToWebView((msg) => {
+      if (msg?.type === "add-knowledge") {
+        handleSuccess()
+      }
+    });
+
+  }, []);
 
   return (
     <>
